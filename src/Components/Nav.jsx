@@ -33,7 +33,7 @@ export default function Nav({ basketState, basket }) {
               >
                 <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
                   {navigation.map((item) => (
-                    <Link to={item.link}>
+                    <Link to={item.link} key={item.id}>
                       <a
                         key={item.id}
                         href={item.href}

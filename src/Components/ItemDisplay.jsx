@@ -42,11 +42,11 @@ function ItemDisplay({
                   <p className="mt-1 text-lg font-medium text-gray-900">
                     $ {product.price}
                   </p>
-                  <p className="mt-1 text-lg font-medium text-gray-900">
+                  {/* <p className="mt-1 text-lg font-medium text-gray-900">
                     {items.find((x) => x.id === product.id)
                       ? items[product.id - 1].quantity
                       : 0}
-                  </p>
+                  </p> */}
                   <div className="inline-flex bg-gray-300">
                     <button
                       onClick={() => onRemove(product)}

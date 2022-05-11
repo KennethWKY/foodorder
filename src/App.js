@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
+import { doc, onSnapshot, collection } from "firebase/firestore";
 
 import "./App.css";
 import "./index.css";
 import "./tailwind.css";
+import db from "./firebase";
 
 import Nav from "./Components/Nav";
 import ItemDisplay from "./Components/ItemDisplay";
@@ -44,8 +46,6 @@ function App() {
 
   const onAdd = (product) => {
     const exist = basket.find((x) => x.id === product.id);
-    console.log(basket);
-    console.log(exist);
     if (exist) {
       setBasket(
         basket.map((x) =>
@@ -76,6 +76,12 @@ function App() {
 
   const eachAmount = basket.map((x) => x.quantity * x.price);
   const ttlPrice = eachAmount.reduce((prev, cur) => prev + cur, 0);
+
+  useEffect(() => {
+    onSnapshot(collection(db, "order"), (snapshot) => {
+      console.log(snapshot.docs.map((doc) => doc.data()));
+    });
+  });
 
   return (
     <div className="App">
