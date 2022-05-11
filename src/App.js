@@ -12,6 +12,8 @@ import Basket from "./Components/Basket";
 import Checkout from "./Components/Checkout";
 import Header from "./Components/Header";
 import Preview from "./Components/Preview";
+import Footer from "./Components/Footer.jsx";
+import Intro from "./Components/Intro";
 
 import img1 from "./img/1.jpg";
 import img2 from "./img/2.jpg";
@@ -24,7 +26,7 @@ function App() {
     { id: 1, name: "Tomato Soup", price: 4.5, pic: img1, quantity: 0 },
     { id: 2, name: "Squash Soup", price: 4.5, pic: img2, quantity: 0 },
     { id: 3, name: "Corn Bisque", price: 6.5, pic: img3, quantity: 0 },
-    { id: 4, name: "Whoe WHeat", price: 2, pic: img4, quantity: 0 },
+    { id: 4, name: "Whole Wheat", price: 2, pic: img4, quantity: 0 },
     { id: 5, name: "Italian", price: 2.5, pic: img5, quantity: 0 },
   ];
 
@@ -40,12 +42,10 @@ function App() {
     setPreviewIsOpen(true);
   }
 
-  // const addPopup = (product) => {
-  //   setBasket((basket) => [...basket, product]);
-  // };
-
   const onAdd = (product) => {
     const exist = basket.find((x) => x.id === product.id);
+    console.log(basket);
+    console.log(exist);
     if (exist) {
       setBasket(
         basket.map((x) =>
@@ -71,18 +71,11 @@ function App() {
   };
 
   const onClear = (product) => {
-    const exist = basket.find((x) => x.id === product.id);
-    setBasket(
-      basket.map((x) => (x.id === product.id ? { ...exist, quantity: 0 } : x))
-    );
+    setBasket((basket) => basket.filter((x) => x != product));
   };
 
   const eachAmount = basket.map((x) => x.quantity * x.price);
   const ttlPrice = eachAmount.reduce((prev, cur) => prev + cur, 0);
-
-  // useEffect(() => {
-  //   ttlAmount = basket.length;
-  // });
 
   return (
     <div className="App">
@@ -95,16 +88,11 @@ function App() {
       />
       <Nav basketState={setOpen} basket={open} items={basket} />
       <Header />
-      <Preview
-        isOpen={previewIsOpen}
-        closePreview={closePreview}
-        onAdd={onAdd}
-        onRemove={onRemove}
-        products={item}
-      />
+
       <Routes>
+        <Route path="home" element={<Intro items={item} />}></Route>
         <Route
-          path="/"
+          path="items"
           element={
             <ItemDisplay
               items={basket}
@@ -112,11 +100,20 @@ function App() {
               onRemove={onRemove}
               products={item}
               openPreview={openPreview}
+              previewIsOpen={previewIsOpen}
+              closePreview={closePreview}
+              setPreviewIsOpen={setPreviewIsOpen}
             />
           }
         />
-        <Route path="checkout" element={<Checkout items={basket} />} />
+        <Route
+          path="checkout"
+          element={
+            <Checkout items={basket} onClear={onClear} ttlPrice={ttlPrice} />
+          }
+        />
       </Routes>
+      <Footer />
     </div>
   );
 }

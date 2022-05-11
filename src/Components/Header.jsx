@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 export default function Header({ bg_large }) {
   return (
-    <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-      <div className="sm:text-center lg:text-left">
+    <main className="h-96 mt-2 mx-auto max-w-7xl px-8 sm:mt-12 sm:px-6 md:mt-2 lg:mt-2 lg:px-8 xl:mt-2 bg-[url('/src/img/bg_large.jpg')] bg-fixed bg-contain bg-no-repeat">
+      <div className="pt-12 sm:text-center lg:text-left">
         <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
           <span className="block xl:inline">Food Ordering</span>{" "}
           <span className="block text-indigo-600 xl:inline">
@@ -13,12 +15,14 @@ export default function Header({ bg_large }) {
         </p>
         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
           <div className="rounded-md shadow">
-            <a
-              href="#"
-              className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-            >
-              Order Now
-            </a>
+            <Link to={"items"}>
+              <a
+                href="#"
+                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+              >
+                Order Now
+              </a>
+            </Link>
           </div>
           <div className="mt-3 sm:mt-0 sm:ml-3">
             <a

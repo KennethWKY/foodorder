@@ -69,6 +69,7 @@ export default function Preview({
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     strokeWidth={2}
+                    onClick={onRemove}
                   >
                     <path
                       strokeLinecap="round"
@@ -91,6 +92,7 @@ export default function Preview({
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     strokeWidth={2}
+                    onClick={onRemove}
                   >
                     <path
                       strokeLinecap="round"

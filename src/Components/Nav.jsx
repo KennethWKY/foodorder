@@ -5,9 +5,9 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 
 const navigation = [
-  { name: "Home", href: "#", link: "/" },
-  { name: "Items", href: "#", link: "/shop" },
-  { name: "checkout", href: "#", link: "/checkout" },
+  { id: 1, name: "Home", href: "#", link: "/home" },
+  { id: 2, name: "Items", href: "#", link: "/items" },
+  { id: 3, name: "checkout", href: "#", link: "/checkout" },
 ];
 
 export default function Nav({ basketState, basket }) {
@@ -35,7 +35,7 @@ export default function Nav({ basketState, basket }) {
                   {navigation.map((item) => (
                     <Link to={item.link}>
                       <a
-                        key={item.name}
+                        key={item.id}
                         href={item.href}
                         className="font-medium text-gray-500 hover:text-gray-900"
                       >
