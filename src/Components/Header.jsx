@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Header({ bg_large }) {
   return (
-    <main className="h-96 mt-2 mx-auto max-w-7xl px-8 sm:mt-12 sm:px-6 md:mt-2 lg:mt-2 lg:px-8 xl:mt-2 bg-[url('/src/img/bg_large.jpg')] bg-fixed bg-contain bg-no-repeat">
+    <main className="h-96 mx-auto max-w-7xl px-8 sm:px-6 lg:px-8 bg-[url('/src/img/bg_large.jpg')] bg-fixed md:bg-contain sm=m:bg-cover bg-no-repeat">
       <div className="pt-12 sm:text-center lg:text-left">
         <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
           <span className="block xl:inline">Food Ordering</span>{" "}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import { doc, onSnapshot, collection } from "firebase/firestore";
+import { doc, setDoc, onSnapshot, collection } from "firebase/firestore";
 
 import "./App.css";
 import "./index.css";
@@ -16,6 +16,7 @@ import Header from "./Components/Header";
 import Preview from "./Components/Preview";
 import Footer from "./Components/Footer.jsx";
 import Intro from "./Components/Intro";
+import Control_pannel from "./Components/Control_pannel";
 
 import img1 from "./img/1.jpg";
 import img2 from "./img/2.jpg";
@@ -118,6 +119,7 @@ function App() {
             <Checkout items={basket} onClear={onClear} ttlPrice={ttlPrice} />
           }
         />
+        <Route path="control" element={<Control_pannel />} />
       </Routes>
       <Footer />
     </div>

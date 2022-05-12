@@ -7,7 +7,7 @@ export default function Checkout({ items, onClear, ttlPrice }) {
         {/* Form */}
         <div>
           <div className="mt-10 sm:mt-0">
-            <div className="md:grid md:grid-cols-3 md:gap-6">
+            <div className="md:grid md:grid-cols-3 md:gap-6 m-12 max-w-7xl">
               <div className="mt-5 md:mt-0 md:col-span-2">
                 <form action="#" method="POST">
                   <div className="shadow overflow-hidden sm:rounded-md">
@@ -155,7 +155,7 @@ export default function Checkout({ items, onClear, ttlPrice }) {
               </div>
 
               {/* Order summary */}
-              <div>
+              <div className="bg-white p-6">
                 {items.map((item) => (
                   <li key={item.id} className="flex py-6 w-56 ">
                     <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
