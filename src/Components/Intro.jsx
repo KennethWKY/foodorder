@@ -1,7 +1,7 @@
 export default function Intro({ items }) {
   return (
     <>
-      <div className="m-12">
+      <div className="bg-white p-12 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-20 sm:grid-cols-1">
           <img src={items[0]["pic"]} className="" />
           <p>

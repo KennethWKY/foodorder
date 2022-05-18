@@ -1,9 +1,22 @@
 import { Link } from "react-router-dom";
 
-export default function Checkout({ items, onClear, ttlPrice }) {
+export default function Checkout({
+  items,
+  onClear,
+  ttlPrice,
+  onChange_FirstName,
+  onChange_LastName,
+  onChange_Phone,
+  onChange_Email,
+  onChange_Street,
+  onChange_City,
+  onChange_State,
+  onChange_PostalCode,
+  submit_info,
+}) {
   return (
     <>
-      <div className="flex">
+      <div className="flex bg-white max-w-7xl mx-auto">
         {/* Form */}
         <div>
           <div className="mt-10 sm:mt-0">
@@ -26,6 +39,7 @@ export default function Checkout({ items, onClear, ttlPrice }) {
                             id="first-name"
                             autoComplete="given-name"
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            onChange={onChange_FirstName}
                           />
                         </div>
 
@@ -42,6 +56,7 @@ export default function Checkout({ items, onClear, ttlPrice }) {
                             id="last-name"
                             autoComplete="family-name"
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            onChange={onChange_LastName}
                           />
                         </div>
 
@@ -53,6 +68,7 @@ export default function Checkout({ items, onClear, ttlPrice }) {
                             Email address
                           </label>
                           <input
+                            onChange={onChange_Email}
                             type="text"
                             name="email-address"
                             id="email-address"
@@ -69,9 +85,10 @@ export default function Checkout({ items, onClear, ttlPrice }) {
                             Phone number
                           </label>
                           <input
+                            onChange={onChange_Phone}
                             type="text"
-                            name="email-address"
-                            id="email-address"
+                            name="phone-number"
+                            id="phone-number"
                             autoComplete="email"
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -85,6 +102,7 @@ export default function Checkout({ items, onClear, ttlPrice }) {
                             Street address
                           </label>
                           <input
+                            onChange={onChange_Street}
                             type="text"
                             name="street-address"
                             id="street-address"
@@ -101,6 +119,7 @@ export default function Checkout({ items, onClear, ttlPrice }) {
                             City
                           </label>
                           <input
+                            onChange={onChange_City}
                             type="text"
                             name="city"
                             id="city"
@@ -117,6 +136,7 @@ export default function Checkout({ items, onClear, ttlPrice }) {
                             State / Province
                           </label>
                           <input
+                            onChange={onChange_State}
                             type="text"
                             name="region"
                             id="region"
@@ -133,6 +153,7 @@ export default function Checkout({ items, onClear, ttlPrice }) {
                             ZIP / Postal code
                           </label>
                           <input
+                            onChange={onChange_PostalCode}
                             type="text"
                             name="postal-code"
                             id="postal-code"
@@ -144,6 +165,7 @@ export default function Checkout({ items, onClear, ttlPrice }) {
                     </div>
                     <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                       <button
+                        onClick={submit_info}
                         type="submit"
                         className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >

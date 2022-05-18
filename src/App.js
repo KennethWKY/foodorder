@@ -36,6 +36,15 @@ function App() {
   const [basket, setBasket] = useState([]);
   const [open, setOpen] = useState(true);
   const [previewIsOpen, setPreviewIsOpen] = useState(true);
+  const [info, setInfo] = useState({});
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [postalCode, setPostalCode] = useState("");
 
   function closePreview() {
     setPreviewIsOpen(false);
@@ -78,11 +87,57 @@ function App() {
   const eachAmount = basket.map((x) => x.quantity * x.price);
   const ttlPrice = eachAmount.reduce((prev, cur) => prev + cur, 0);
 
-  useEffect(() => {
-    onSnapshot(collection(db, "order"), (snapshot) => {
-      console.log(snapshot.docs.map((doc) => doc.data()));
+  // useEffect(() => {
+  //   onSnapshot(collection(db, "order"), (snapshot) => {
+  //     console.log(snapshot.docs.map((doc) => doc.data()));
+  //   });
+  // });
+
+  const onChange_FirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const onChange_LastName = (e) => {
+    setLastName(e.target.value);
+  };
+
+  const onChange_Phone = (e) => {
+    setPhone(e.target.value);
+  };
+
+  const onChange_Email = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const onChange_Street = (e) => {
+    setStreet(e.target.value);
+  };
+
+  const onChange_City = (e) => {
+    setCity(e.target.value);
+  };
+
+  const onChange_State = (e) => {
+    setState(e.target.value);
+  };
+
+  const onChange_PostalCode = (e) => {
+    setPostalCode(e.target.value);
+  };
+
+  const submit_info = () => {
+    setInfo({
+      firstName: firstName,
+      lastName: lastName,
+      phone: phone,
+      email: email,
+      street: street,
+      city: city,
+      state: state,
+      postalCode: postalCode,
     });
-  });
+    console.log(info);
+  };
 
   return (
     <div className="App">
@@ -116,7 +171,20 @@ function App() {
         <Route
           path="checkout"
           element={
-            <Checkout items={basket} onClear={onClear} ttlPrice={ttlPrice} />
+            <Checkout
+              items={basket}
+              onClear={onClear}
+              ttlPrice={ttlPrice}
+              onChange_FirstName={onChange_FirstName}
+              onChange_LastName={onChange_LastName}
+              onChange_Phone={onChange_Phone}
+              onChange_Email={onChange_Email}
+              onChange_Street={onChange_Street}
+              onChange_City={onChange_City}
+              onChange_State={onChange_State}
+              onChange_PostalCode={onChange_PostalCode}
+              submit_info={submit_info}
+            />
           }
         />
         <Route path="control" element={<Control_pannel />} />
