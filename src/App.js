@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { doc, setDoc, onSnapshot, collection } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 
 import "./App.css";
 import "./index.css";
@@ -17,6 +18,7 @@ import Preview from "./Components/Preview";
 import Footer from "./Components/Footer.jsx";
 import Intro from "./Components/Intro";
 import Control_pannel from "./Components/Control_pannel";
+import Confirmation from "./Components/Confirmation";
 
 import img1 from "./img/1.jpg";
 import img2 from "./img/2.jpg";
@@ -34,7 +36,7 @@ function App() {
   ];
 
   const [basket, setBasket] = useState([]);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [previewIsOpen, setPreviewIsOpen] = useState(true);
   const [info, setInfo] = useState({});
   const [firstName, setFirstName] = useState("");
@@ -87,11 +89,11 @@ function App() {
   const eachAmount = basket.map((x) => x.quantity * x.price);
   const ttlPrice = eachAmount.reduce((prev, cur) => prev + cur, 0);
 
-  // useEffect(() => {
-  //   onSnapshot(collection(db, "order"), (snapshot) => {
-  //     console.log(snapshot.docs.map((doc) => doc.data()));
-  //   });
-  // });
+  // useEffect(() =>
+  //   onSnapshot(collection(db, "order"), (snapshot) =>
+  //     console.log(snapshot.docs.map((doc) => doc.data()))
+  //   )
+  // );
 
   const onChange_FirstName = (e) => {
     setFirstName(e.target.value);
@@ -131,12 +133,11 @@ function App() {
       lastName: lastName,
       phone: phone,
       email: email,
-      street: street,
-      city: city,
-      state: state,
-      postalCode: postalCode,
+      order: basket,
     });
-    console.log(info);
+    console.log(basket);
+
+    setDoc(doc(db, "order", uuidv4()), info);
   };
 
   return (

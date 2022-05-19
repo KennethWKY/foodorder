@@ -94,7 +94,7 @@ export default function Checkout({
                           />
                         </div>
 
-                        <div className="col-span-6">
+                        {/* <div className="col-span-6">
                           <label
                             htmlFor="street-address"
                             className="block text-sm font-medium text-gray-700"
@@ -109,9 +109,9 @@ export default function Checkout({
                             autoComplete="street-address"
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
-                        </div>
+                        </div> */}
 
-                        <div className="col-span-6 sm:col-span-6 lg:col-span-2">
+                        {/* <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                           <label
                             htmlFor="city"
                             className="block text-sm font-medium text-gray-700"
@@ -126,9 +126,9 @@ export default function Checkout({
                             autoComplete="address-level2"
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
-                        </div>
+                        </div> */}
 
-                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                        {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                           <label
                             htmlFor="region"
                             className="block text-sm font-medium text-gray-700"
@@ -143,9 +143,9 @@ export default function Checkout({
                             autoComplete="address-level1"
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
-                        </div>
+                        </div> */}
 
-                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                        {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                           <label
                             htmlFor="postal-code"
                             className="block text-sm font-medium text-gray-700"
@@ -160,18 +160,10 @@ export default function Checkout({
                             autoComplete="postal-code"
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
-                        </div>
+                        </div> */}
                       </div>
                     </div>
-                    <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                      <button
-                        onClick={submit_info}
-                        type="submit"
-                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      >
-                        Save
-                      </button>
-                    </div>
+                    <div className="px-4 py-3 bg-gray-50 text-right sm:px-6"></div>
                   </div>
                 </form>
               </div>
@@ -222,6 +214,14 @@ export default function Checkout({
                 ))}
                 Total ${ttlPrice}
               </div>
+
+              <button
+                onClick={submit_info}
+                type="submit"
+                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Check out
+              </button>
             </div>
           </div>
         </div>
