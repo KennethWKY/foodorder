@@ -36,8 +36,8 @@ function App() {
   ];
 
   const [basket, setBasket] = useState([]);
+  const [preview, setPreview] = useState(false);
   const [open, setOpen] = useState(false);
-  const [previewIsOpen, setPreviewIsOpen] = useState(true);
   const [info, setInfo] = useState({});
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -48,13 +48,13 @@ function App() {
   const [state, setState] = useState("");
   const [postalCode, setPostalCode] = useState("");
 
-  function closePreview() {
-    setPreviewIsOpen(false);
-  }
+  // function closePreview() {
+  //   setPreviewIsOpen(false);
+  // }
 
-  function openPreview() {
-    setPreviewIsOpen(true);
-  }
+  // function openPreview() {
+  //   setPreviewIsOpen(true);
+  // }
 
   const onAdd = (product) => {
     const exist = basket.find((x) => x.id === product.id);
@@ -135,13 +135,30 @@ function App() {
       email: email,
       order: basket,
     });
+
     console.log(basket);
 
     setDoc(doc(db, "order", uuidv4()), info);
   };
 
+  //Confirmation popup
+  let [confirm, setConfirm] = useState(false);
+
+  function closeModal() {
+    setConfirm(false);
+  }
+
+  function openModal() {
+    setConfirm(true);
+  }
+
+  //Preview
+  const openPreview = (e) => {
+    console.log(e.target);
+  };
+
   return (
-    <div className="App">
+    <div className="App bg-white">
       <Basket
         basketState={setOpen}
         basket={open}
@@ -150,6 +167,19 @@ function App() {
         ttlPrice={ttlPrice}
       />
       <Nav basketState={setOpen} basket={open} items={basket} />
+      <Confirmation
+        setConfirm={setConfirm}
+        closeModal={closeModal}
+        openModal={openModal}
+        submit_info={submit_info}
+        confirm={confirm}
+      />
+      <Preview
+        preview={preview}
+        setPreview={setPreview}
+        products={item}
+        basket={basket}
+      />
       <Header />
 
       <Routes>
@@ -162,10 +192,8 @@ function App() {
               onAdd={onAdd}
               onRemove={onRemove}
               products={item}
+              setPreview={setPreview}
               openPreview={openPreview}
-              previewIsOpen={previewIsOpen}
-              closePreview={closePreview}
-              setPreviewIsOpen={setPreviewIsOpen}
             />
           }
         />
@@ -185,6 +213,7 @@ function App() {
               onChange_State={onChange_State}
               onChange_PostalCode={onChange_PostalCode}
               submit_info={submit_info}
+              openModal={openModal}
             />
           }
         />

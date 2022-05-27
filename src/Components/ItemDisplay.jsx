@@ -9,10 +9,8 @@ function ItemDisplay({
   onAdd,
   onRemove,
   products,
+  setPreview,
   openPreview,
-  closePreview,
-  previewIsOpen,
-  setPreviewIsOpen,
 }) {
   const cancelButtonRef = useRef(null);
 
@@ -28,7 +26,7 @@ function ItemDisplay({
                 key={product.id}
                 href={product.href}
                 className="group"
-                onClick={openPreview}
+                onClick={() => setPreview(true)}
               >
                 <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                   <img

@@ -15,9 +15,9 @@ const navigation = [
 export default function Nav({ basketState, basket }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="sticky top-0  bg-white overflow-hidden max-w-7xl mx-auto">
+    <div className="sticky top-0  bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="relative pb-4 bg-white sm:pb-4 md:pb-4 lg:max-w-2xl lg:w-full lg:pb-4 xl:pb-4">
+        <div className="relative pb-4 bg-white sm:pb-4 md:pb-4 lg:w-full lg:pb-4 xl:pb-4">
           {/* <svg
             className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
             fill="currentColor"
@@ -63,10 +63,11 @@ export default function Nav({ basketState, basket }) {
                     />
                   </svg>
                 </div>
+
                 <a href="#">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 hover:h-8 hover:w-8"
+                    className="h-6 w-6"
                     viewBox="0 0 20 20"
                     fill="indigo"
                     onClick={() => basketState(true)}
