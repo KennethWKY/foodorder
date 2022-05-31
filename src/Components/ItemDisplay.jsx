@@ -26,7 +26,7 @@ function ItemDisplay({
                 key={product.id}
                 href={product.href}
                 className="group"
-                onClick={() => setPreview(true)}
+                onClick={() => openPreview(product)}
               >
                 <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                   <img
@@ -40,52 +40,6 @@ function ItemDisplay({
                   <p className="mt-1 text-lg font-medium text-gray-900">
                     $ {product.price}
                   </p>
-                  {/* <p className="mt-1 text-lg font-medium text-gray-900">
-                    {items.find((x) => x.id === product.id)
-                      ? items[product.id - 1].quantity
-                      : 0}
-                  </p> */}
-                  <div className="inline-flex bg-gray-300">
-                    <button
-                      onClick={() => onRemove(product)}
-                      className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-1 rounded-l"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M18 12H6"
-                        />
-                      </svg>
-                    </button>
-
-                    <button
-                      onClick={() => onAdd(product)}
-                      className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-1 rounded-r"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                        />
-                      </svg>
-                    </button>
-                  </div>
                 </div>
               </a>
             ))}

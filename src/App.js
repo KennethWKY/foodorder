@@ -153,8 +153,11 @@ function App() {
   }
 
   //Preview
-  const openPreview = (e) => {
-    console.log(e.target);
+  const [previewItem, setPreviewItem] = useState({});
+
+  const openPreview = (product) => {
+    setPreviewItem(product);
+    setPreview(true);
   };
 
   return (
@@ -177,8 +180,10 @@ function App() {
       <Preview
         preview={preview}
         setPreview={setPreview}
-        products={item}
+        product={previewItem}
         basket={basket}
+        onAdd={onAdd}
+        onRemove={onRemove}
       />
       <Header />
 

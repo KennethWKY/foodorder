@@ -10,9 +10,10 @@ function classNames(...classes) {
 export default function Preview({
   preview,
   setPreview,
-  products,
+  product,
   basket,
-  openPreview,
+  onAdd,
+  onRemove,
 }) {
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   // const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
@@ -57,14 +58,14 @@ export default function Preview({
                   <div className="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
                     <div className="aspect-w-2 aspect-h-3 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-5">
                       <img
-                        src={products.pic}
-                        alt={products.name}
+                        src={product.pic}
+                        alt={product.name}
                         className="object-center object-cover"
                       />
                     </div>
                     <div className="sm:col-span-8 lg:col-span-7">
                       <h2 className="text-2xl font-extrabold text-gray-900 sm:pr-12">
-                        {products.name}
+                        {product.name}
                       </h2>
 
                       <section
@@ -76,8 +77,31 @@ export default function Preview({
                         </h3>
 
                         <p className="text-2xl text-gray-900">
-                          {products.price}
+                          {product.price}
                         </p>
+
+                        <div className="inline-flex">
+                          <button
+                            onClick={() => onRemove(product)}
+                            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+                          >
+                            {" "}
+                            -{" "}
+                          </button>
+                          <div>
+                            {basket.length > 0
+                              ? basket.find((target) => target.id == product.id)
+                                  .quantity
+                              : 0}
+                          </div>
+                          <button
+                            onClick={() => onAdd(product)}
+                            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+                          >
+                            {" "}
+                            +{" "}
+                          </button>
+                        </div>
                       </section>
 
                       <section
