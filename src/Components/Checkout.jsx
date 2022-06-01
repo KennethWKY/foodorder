@@ -8,10 +8,6 @@ export default function Checkout({
   onChange_LastName,
   onChange_Phone,
   onChange_Email,
-  onChange_Street,
-  onChange_City,
-  onChange_State,
-  onChange_PostalCode,
   submit_info,
   openModal,
 }) {

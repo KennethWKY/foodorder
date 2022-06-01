@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
+import AddCount from "./AddCount";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -88,19 +89,25 @@ export default function Preview({
                             {" "}
                             -{" "}
                           </button>
-                          <div>
-                            {basket.length > 0
-                              ? basket.find((target) => target.id == product.id)
-                                  .quantity
-                              : 0}
-                          </div>
+
                           <button
                             onClick={() => onAdd(product)}
-                            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+                            className="inline-flex items-center justify-center w-10 h-10 mr-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
                           >
-                            {" "}
-                            +{" "}
+                            <svg
+                              className="w-4 h-4 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                                clip-rule="evenodd"
+                                fill-rule="evenodd"
+                              ></path>
+                            </svg>
                           </button>
+                          <div>
+                            <AddCount selectItem={product} basket={basket} />
+                          </div>
                         </div>
                       </section>
 

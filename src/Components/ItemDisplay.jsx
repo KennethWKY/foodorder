@@ -3,6 +3,7 @@ import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
 import { ExclamationIcon } from "@heroicons/react/outline";
+import AddCount from "./AddCount";
 
 function ItemDisplay({
   items,
@@ -40,6 +41,9 @@ function ItemDisplay({
                   <p className="mt-1 text-lg font-medium text-gray-900">
                     $ {product.price}
                   </p>
+                  <div className="rounded-full bg-black w-10 h-7 flex justify-center">
+                    <AddCount basket={items} selectItem={product} />
+                  </div>
                 </div>
               </a>
             ))}
