@@ -84,7 +84,7 @@ export default function Preview({
                         <div className="inline-flex">
                           <button
                             onClick={() => onRemove(product)}
-                            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+                            className="inline-flex items-center justify-center w-10 h-10 mr-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
                           >
                             {" "}
                             -{" "}

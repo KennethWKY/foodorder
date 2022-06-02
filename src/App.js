@@ -57,6 +57,16 @@ function App() {
   //   setPreviewIsOpen(true);
   // }
 
+  //   onSnapshot(collection(db, "order"), (snapshot) =>
+  //     snapshot.docs.map((doc) => doc.data())
+  //   );
+
+  // get orders
+  const orders = [];
+  onSnapshot(collection(db, "order"), (snapshot) =>
+    snapshot.docs.map((doc) => orders.push(doc.data()))
+  );
+
   const onAdd = (product) => {
     const exist = basket.find((x) => x.id === product.id);
     if (exist) {
@@ -90,10 +100,6 @@ function App() {
   const eachAmount = basket.map((x) => x.quantity * x.price);
   const ttlPrice = eachAmount.reduce((prev, cur) => prev + cur, 0);
 
-  const order = onSnapshot(collection(db, "order"), (snapshot) =>
-    console.log(snapshot.docs.map((doc) => doc.data()))
-  );
-
   const onChange_FirstName = (e) => {
     setFirstName(e.target.value);
   };
@@ -111,6 +117,7 @@ function App() {
   };
 
   const submit_info = () => {
+    let id = uuidv4();
     setInfo({
       firstName: firstName,
       lastName: lastName,
@@ -118,11 +125,10 @@ function App() {
       email: email,
       order: basket,
       status: "received",
+      id: id,
     });
-
-    console.log(basket);
-
-    setDoc(doc(db, "order", uuidv4()), info);
+    console.log(info);
+    // setDoc(doc(db, "order", id), info);
   };
 
   //Confirmation popup
@@ -202,7 +208,10 @@ function App() {
             />
           }
         />
-        <Route path="admin" element={<AdminDashboard db={db} />} />
+        <Route
+          path="admin"
+          element={<AdminDashboard db={db} orders={orders} />}
+        />
       </Routes>
       <Footer />
     </div>

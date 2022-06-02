@@ -1,10 +1,10 @@
 import OrderHistory from "./OrderHistory";
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ orders }) {
   return (
     <>
       <div>
-        <OrderHistory />
+        <OrderHistory orders={orders} />
       </div>
     </>
   );
