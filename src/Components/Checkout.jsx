@@ -8,10 +8,6 @@ export default function Checkout({
   onChange_LastName,
   onChange_Phone,
   onChange_Email,
-  onChange_Street,
-  onChange_City,
-  onChange_State,
-  onChange_PostalCode,
   submit_info,
   openModal,
 }) {
@@ -39,7 +35,7 @@ export default function Checkout({
                             name="first-name"
                             id="first-name"
                             autoComplete="given-name"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm text-lg text-black border-gray-300 rounded-md"
                             onChange={onChange_FirstName}
                           />
                         </div>
@@ -56,7 +52,7 @@ export default function Checkout({
                             name="last-name"
                             id="last-name"
                             autoComplete="family-name"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm text-lg text-black border-gray-300 rounded-md"
                             onChange={onChange_LastName}
                           />
                         </div>
@@ -74,7 +70,7 @@ export default function Checkout({
                             name="email-address"
                             id="email-address"
                             autoComplete="email"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm text-lg text-black border-gray-300 rounded-md"
                           />
                         </div>
 
@@ -91,7 +87,7 @@ export default function Checkout({
                             name="phone-number"
                             id="phone-number"
                             autoComplete="email"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm text-lg text-black border-gray-300 rounded-md"
                           />
                         </div>
 

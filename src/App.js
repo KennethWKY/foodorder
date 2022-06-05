@@ -19,6 +19,7 @@ import Footer from "./Components/Footer.jsx";
 import Intro from "./Components/Intro";
 import Control_pannel from "./Components/Control_pannel";
 import Confirmation from "./Components/Confirmation";
+import AdminDashboard from "./Components/AdminDashboard";
 
 import img1 from "./img/1.jpg";
 import img2 from "./img/2.jpg";
@@ -56,6 +57,16 @@ function App() {
   //   setPreviewIsOpen(true);
   // }
 
+  //   onSnapshot(collection(db, "order"), (snapshot) =>
+  //     snapshot.docs.map((doc) => doc.data())
+  //   );
+
+  // get orders
+  const orders = [];
+  onSnapshot(collection(db, "order"), (snapshot) =>
+    snapshot.docs.map((doc) => orders.push(doc.data()))
+  );
+
   const onAdd = (product) => {
     const exist = basket.find((x) => x.id === product.id);
     if (exist) {
@@ -89,12 +100,6 @@ function App() {
   const eachAmount = basket.map((x) => x.quantity * x.price);
   const ttlPrice = eachAmount.reduce((prev, cur) => prev + cur, 0);
 
-  // useEffect(() =>
-  //   onSnapshot(collection(db, "order"), (snapshot) =>
-  //     console.log(snapshot.docs.map((doc) => doc.data()))
-  //   )
-  // );
-
   const onChange_FirstName = (e) => {
     setFirstName(e.target.value);
   };
@@ -111,34 +116,19 @@ function App() {
     setEmail(e.target.value);
   };
 
-  const onChange_Street = (e) => {
-    setStreet(e.target.value);
-  };
-
-  const onChange_City = (e) => {
-    setCity(e.target.value);
-  };
-
-  const onChange_State = (e) => {
-    setState(e.target.value);
-  };
-
-  const onChange_PostalCode = (e) => {
-    setPostalCode(e.target.value);
-  };
-
   const submit_info = () => {
+    let id = uuidv4();
     setInfo({
       firstName: firstName,
       lastName: lastName,
       phone: phone,
       email: email,
       order: basket,
+      status: "received",
+      id: id,
     });
-
-    console.log(basket);
-
-    setDoc(doc(db, "order", uuidv4()), info);
+    console.log(info);
+    // setDoc(doc(db, "order", id), info);
   };
 
   //Confirmation popup
@@ -213,16 +203,15 @@ function App() {
               onChange_LastName={onChange_LastName}
               onChange_Phone={onChange_Phone}
               onChange_Email={onChange_Email}
-              onChange_Street={onChange_Street}
-              onChange_City={onChange_City}
-              onChange_State={onChange_State}
-              onChange_PostalCode={onChange_PostalCode}
               submit_info={submit_info}
               openModal={openModal}
             />
           }
         />
-        <Route path="control" element={<Control_pannel />} />
+        <Route
+          path="admin"
+          element={<AdminDashboard db={db} orders={orders} />}
+        />
       </Routes>
       <Footer />
     </div>
