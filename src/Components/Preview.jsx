@@ -19,6 +19,8 @@ export default function Preview({
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   // const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
+  //div
+
   return (
     <Transition.Root show={preview} as="div">
       <Dialog as="div" className="relative z-10" onClose={setPreview}>
