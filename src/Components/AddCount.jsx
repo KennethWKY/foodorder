@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export default function AddCount({ basket, selectItem }) {
   const selectItemId = selectItem.id;
 
@@ -5,7 +7,7 @@ export default function AddCount({ basket, selectItem }) {
     <div>
       {basket.length > 0
         ? basket.map((item) =>
-            item.id === selectItemId ? <div>{item.quantity}</div> : <div></div>
+            item.id === selectItemId ? <div>{item.quantity}</div> : null
           )
         : 0}
     </div>

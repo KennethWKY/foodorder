@@ -22,10 +22,10 @@ export default function Preview({
   //div
 
   return (
-    <Transition.Root show={preview} as="div">
+    <Transition.Root show={preview} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setPreview}>
         <Transition.Child
-          as="div"
+          as={Fragment}
           enter="ease-out duration-300"
           enterFrom="opacity-0"
           enterTo="opacity-100"
@@ -39,7 +39,7 @@ export default function Preview({
         <div className="fixed z-10 inset-0 overflow-y-auto">
           <div className="flex items-stretch md:items-center justify-center min-h-full text-center md:px-2 lg:px-4">
             <Transition.Child
-              as="div"
+              as={Fragment}
               enter="ease-out duration-300"
               enterFrom="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
               enterTo="opacity-100 translate-y-0 md:scale-100"
@@ -66,21 +66,21 @@ export default function Preview({
                         className="object-center object-cover"
                       />
                     </div>
-                    <div className="sm:col-span-8 lg:col-span-7">
+                    <div className="sm:col-span-8 lg:col-span-7 content-center">
                       <h2 className="text-2xl font-extrabold text-gray-900 sm:pr-12">
                         {product.name}
                       </h2>
 
                       <section
                         aria-labelledby="information-heading"
-                        className="mt-2"
+                        className="flex justify-between"
                       >
                         <h3 id="information-heading" className="sr-only">
                           Product information
                         </h3>
 
                         <p className="text-2xl text-gray-900">
-                          {product.price}
+                          $ {product.price}
                         </p>
 
                         <div className="inline-flex">
@@ -107,9 +107,9 @@ export default function Preview({
                               ></path>
                             </svg>
                           </button>
-                          <div>
-                            <AddCount selectItem={product} basket={basket} />
-                          </div>
+                        </div>
+                        <div>
+                          <AddCount selectItem={product} basket={basket} />
                         </div>
                       </section>
 

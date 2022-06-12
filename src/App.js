@@ -127,7 +127,10 @@ function App() {
       status: "received",
       id: id,
     });
-    console.log(info);
+    for (const value of Object.keys(info)) {
+      let data = info[value];
+      data == "" ? console.log("error" + value) : console.log("ok" + value);
+    }
     // setDoc(doc(db, "order", id), info);
   };
 

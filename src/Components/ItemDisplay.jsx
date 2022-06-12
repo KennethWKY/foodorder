@@ -41,6 +41,7 @@ function ItemDisplay({
                   <p className="mt-1 text-lg font-medium text-gray-900">
                     $ {product.price}
                   </p>
+
                   <div className="rounded-full bg-black w-10 h-7 flex justify-center">
                     <AddCount basket={items} selectItem={product} />
                   </div>
