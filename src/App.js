@@ -39,7 +39,7 @@ function App() {
   const [basket, setBasket] = useState([]);
   const [preview, setPreview] = useState(false);
   const [open, setOpen] = useState(false);
-  const [info, setInfo] = useState({});
+  const [info, setInfo] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
@@ -127,10 +127,11 @@ function App() {
       status: "received",
       id: id,
     });
-    for (const value of Object.keys(info)) {
-      let data = info[value];
-      data == "" ? console.log("error" + value) : console.log("ok" + value);
-    }
+    openModal();
+    // for (const value of Object.keys(info)) {
+    //   let data = info[value];
+    //   data == "" ? console.log("error" + value) : console.log("ok" + value);
+    // }
     // setDoc(doc(db, "order", id), info);
   };
 
@@ -169,6 +170,8 @@ function App() {
         openModal={openModal}
         submit_info={submit_info}
         confirm={confirm}
+        info={info}
+        basket={basket}
       />
       <Preview
         preview={preview}

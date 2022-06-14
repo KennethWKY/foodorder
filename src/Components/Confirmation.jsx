@@ -7,7 +7,10 @@ export default function Confirmation({
   openModal,
   submit_info,
   confirm,
+  info,
+  basket,
 }) {
+  const [error, setError] = useState(false);
   return (
     <>
       {/* <div className="fixed inset-0 flex items-center justify-center">
@@ -50,13 +53,38 @@ export default function Confirmation({
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Payment successful
+                    Order Details
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
+                      Please confirmation your order.
                     </p>
+                  </div>
+
+                  <div>
+                    {basket.map((item) =>
+                      item.quantity > 0 ? item.name : null
+                    )}
+                  </div>
+
+                  <div>
+                    {info.firstName != "" ? null : (
+                      <div>require first name</div>
+                    )}
+
+                    {info.lasttName != "" ? null : <div>require last name</div>}
+
+                    {info.email != "" ? (
+                      <div>email : {info.email}</div>
+                    ) : (
+                      <div>require email name</div>
+                    )}
+
+                    {info.phone.length === 9 ? (
+                      <div>Phone number : {info.phone}</div>
+                    ) : (
+                      <div>require valid phone number</div>
+                    )}
                   </div>
 
                   <div className="mt-4">

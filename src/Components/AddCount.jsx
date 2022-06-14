@@ -7,7 +7,9 @@ export default function AddCount({ basket, selectItem }) {
     <div>
       {basket.length > 0
         ? basket.map((item) =>
-            item.id === selectItemId ? <div>{item.quantity}</div> : null
+            item.id === selectItemId ? (
+              <div key={item.id}>{item.quantity}</div>
+            ) : null
           )
         : 0}
     </div>
