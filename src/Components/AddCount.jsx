@@ -1,17 +1,5 @@
-import { useEffect } from "react";
-
 export default function AddCount({ basket, selectItem }) {
-  const selectItemId = selectItem.id;
+  const exist = basket.find((x) => x.id == selectItem.id);
 
-  return (
-    <div>
-      {basket.length > 0
-        ? basket.map((item) =>
-            item.id === selectItemId ? (
-              <div key={item.id}>{item.quantity}</div>
-            ) : null
-          )
-        : 0}
-    </div>
-  );
+  return <div>{exist ? <div>{exist.quantity}</div> : <div>0</div>}</div>;
 }

@@ -10,6 +10,7 @@ export default function Checkout({
   onChange_Email,
   submit_info,
   openModal,
+  confirm,
 }) {
   return (
     <>
@@ -35,7 +36,7 @@ export default function Checkout({
                             name="first-name"
                             id="first-name"
                             autoComplete="given-name"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm text-lg text-black border-gray-300 rounded-md"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             onChange={onChange_FirstName}
                           />
                         </div>
@@ -52,7 +53,7 @@ export default function Checkout({
                             name="last-name"
                             id="last-name"
                             autoComplete="family-name"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm text-lg text-black border-gray-300 rounded-md"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             onChange={onChange_LastName}
                           />
                         </div>
@@ -66,12 +67,17 @@ export default function Checkout({
                           </label>
                           <input
                             onChange={onChange_Email}
+                            required
                             type="text"
                             name="email-address"
                             id="email-address"
                             autoComplete="email"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm text-lg text-black border-gray-300 rounded-md"
+                            className="peer invalid:border-red-500 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                           />
+
+                          <p class="invisible peer-invalid:visible text-red-700 font-light">
+                            Please enter your email
+                          </p>
                         </div>
 
                         <div className="col-span-6 sm:col-span-4">
@@ -87,7 +93,7 @@ export default function Checkout({
                             name="phone-number"
                             id="phone-number"
                             autoComplete="email"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm text-lg text-black border-gray-300 rounded-md"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                           />
                         </div>
 

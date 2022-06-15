@@ -82,15 +82,17 @@ function App() {
 
   const onRemove = (product) => {
     const exist = basket.find((x) => x.id === product.id);
-    setBasket(
-      basket.map((x) =>
-        x.id === product.id
-          ? x.quantity > 1
-            ? { ...exist, quantity: exist.quantity - 1 }
-            : { ...exist, quantity: 0 }
-          : x
-      )
-    );
+    exist.quantity == 1
+      ? onClear(exist)
+      : setBasket(
+          basket.map((x) =>
+            x.id === product.id
+              ? x.quantity > 1
+                ? { ...exist, quantity: exist.quantity - 1 }
+                : { ...exist, quantity: 0 }
+              : x
+          )
+        );
   };
 
   const onClear = (product) => {
@@ -211,6 +213,7 @@ function App() {
               onChange_Email={onChange_Email}
               submit_info={submit_info}
               openModal={openModal}
+              confirm={confirm}
             />
           }
         />

@@ -80,7 +80,7 @@ export default function Confirmation({
                       <div>require email name</div>
                     )}
 
-                    {info.phone.length === 9 ? (
+                    {info.phone != "" ? (
                       <div>Phone number : {info.phone}</div>
                     ) : (
                       <div>require valid phone number</div>

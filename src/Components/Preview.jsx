@@ -47,7 +47,7 @@ export default function Preview({
               leaveFrom="opacity-100 translate-y-0 md:scale-100"
               leaveTo="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
             >
-              <Dialog.Panel className="flex text-base text-left transform transition w-full md:max-w-2xl md:px-4 md:my-8 lg:max-w-4xl">
+              <Dialog.Panel className="flex text-base text-left transform transition w-full max-w-2xl px-4 md:my-8 ">
                 <div className="w-full relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8 rounded-md">
                   <button
                     type="button"
@@ -83,18 +83,41 @@ export default function Preview({
                           $ {product.price}
                         </p>
 
-                        <div className="inline-flex">
+                        <div className="inline-flex"></div>
+                        <div>
+                          <AddCount selectItem={product} basket={basket} />
+                        </div>
+                      </section>
+
+                      <section
+                        aria-labelledby="options-heading"
+                        className="mt-10"
+                      >
+                        <div
+                          class="inline-flex rounded-md shadow-sm"
+                          role="group"
+                        >
                           <button
                             onClick={() => onRemove(product)}
-                            className="inline-flex items-center justify-center w-10 h-10 mr-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
+                            className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700  dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
                           >
-                            {" "}
-                            -{" "}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-5 w-5"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
                           </button>
 
                           <button
                             onClick={() => onAdd(product)}
-                            className="inline-flex items-center justify-center w-10 h-10 mr-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
+                            className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700  dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
                           >
                             <svg
                               className="w-4 h-4 fill-current"
@@ -108,26 +131,6 @@ export default function Preview({
                             </svg>
                           </button>
                         </div>
-                        <div>
-                          <AddCount selectItem={product} basket={basket} />
-                        </div>
-                      </section>
-
-                      <section
-                        aria-labelledby="options-heading"
-                        className="mt-10"
-                      >
-                        <h3 id="options-heading" className="sr-only">
-                          Product options
-                        </h3>
-
-                        <button
-                          onClick={() => setPreview(false)}
-                          type="submit"
-                          className="mt-6 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                          Add to bag
-                        </button>
                       </section>
                     </div>
                   </div>
