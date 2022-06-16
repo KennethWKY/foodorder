@@ -5,14 +5,7 @@ import { StarIcon } from "@heroicons/react/solid";
 import { ExclamationIcon } from "@heroicons/react/outline";
 import AddCount from "./AddCount";
 
-function ItemDisplay({
-  items,
-  onAdd,
-  onRemove,
-  products,
-  setPreview,
-  openPreview,
-}) {
+function ItemDisplay({ items, products, openPreview }) {
   const cancelButtonRef = useRef(null);
 
   return (

@@ -7,9 +7,9 @@ import { Fragment, useState } from "react";
 
 const navigation = [
   { id: 1, name: "Home", href: "#", link: "/home" },
-  { id: 2, name: "Items", href: "#", link: "/items" },
-  { id: 3, name: "checkout", href: "#", link: "/checkout" },
-  { id: 4, name: "admin", href: "#", link: "/admin" },
+  // { id: 2, name: "Items", href: "#", link: "/items" },
+  { id: 3, name: "Checkout", href: "#", link: "/checkout" },
+  { id: 4, name: "Order History", href: "#", link: "/admin" },
 ];
 
 export default function Nav({ basketState, basket }) {

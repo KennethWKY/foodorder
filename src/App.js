@@ -44,10 +44,6 @@ function App() {
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [postalCode, setPostalCode] = useState("");
 
   // function closePreview() {
   //   setPreviewIsOpen(false);
@@ -118,7 +114,7 @@ function App() {
     setEmail(e.target.value);
   };
 
-  const submit_info = () => {
+  const set_info = () => {
     let id = uuidv4();
     setInfo({
       firstName: firstName,
@@ -130,11 +126,17 @@ function App() {
       id: id,
     });
     openModal();
-    // for (const value of Object.keys(info)) {
-    //   let data = info[value];
-    //   data == "" ? console.log("error" + value) : console.log("ok" + value);
-    // }
-    // setDoc(doc(db, "order", id), info);
+  };
+
+  const [error, setError] = useState(true);
+
+  useEffect(() => {
+    setError(false);
+  }, [info]);
+
+  const submit = () => {
+    error === true ? console.log("submit") : console.log("error");
+    // setDoc(doc(db, "order"), info);
   };
 
   //Confirmation popup
@@ -170,7 +172,7 @@ function App() {
         setConfirm={setConfirm}
         closeModal={closeModal}
         openModal={openModal}
-        submit_info={submit_info}
+        submit={submit}
         confirm={confirm}
         info={info}
         basket={basket}
@@ -183,19 +185,16 @@ function App() {
         onAdd={onAdd}
         onRemove={onRemove}
       />
-      <Header />
+      {/* <Header /> */}
 
       <Routes>
-        <Route path="home" element={<Intro items={item} />}></Route>
+        {/* <Route path="home" element={<Intro items={item} />}></Route> */}
         <Route
-          path="items"
+          path="home"
           element={
             <ItemDisplay
               items={basket}
-              onAdd={onAdd}
-              onRemove={onRemove}
               products={item}
-              setPreview={setPreview}
               openPreview={openPreview}
             />
           }
@@ -211,7 +210,7 @@ function App() {
               onChange_LastName={onChange_LastName}
               onChange_Phone={onChange_Phone}
               onChange_Email={onChange_Email}
-              submit_info={submit_info}
+              set_info={set_info}
               openModal={openModal}
               confirm={confirm}
             />

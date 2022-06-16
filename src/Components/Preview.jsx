@@ -94,7 +94,7 @@ export default function Preview({
                         className="mt-10"
                       >
                         <div
-                          class="inline-flex rounded-md shadow-sm"
+                          className="inline-flex rounded-md shadow-sm"
                           role="group"
                         >
                           <button

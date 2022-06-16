@@ -5,12 +5,12 @@ export default function Confirmation({
   setConfirm,
   closeModal,
   openModal,
-  submit_info,
+  submit,
   confirm,
   info,
   basket,
 }) {
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   return (
     <>
       {/* <div className="fixed inset-0 flex items-center justify-center">
@@ -56,20 +56,22 @@ export default function Confirmation({
                     Order Details
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
+                    <p className="text-md text-gray-500">
                       Please confirmation your order.
                     </p>
                   </div>
 
-                  <div>
+                  <div className="m-3">
                     {basket.map((item) =>
-                      item.quantity > 0 ? item.name : null
+                      item.quantity > 0 ? (
+                        <div className="text-gray-900">{item.name}</div>
+                      ) : null
                     )}
                   </div>
 
                   <div>
                     {info.firstName != "" ? null : (
-                      <div>require first name</div>
+                      <div className="text-red-600">require first name</div>
                     )}
 
                     {info.lasttName != "" ? null : <div>require last name</div>}
@@ -77,13 +79,15 @@ export default function Confirmation({
                     {info.email != "" ? (
                       <div>email : {info.email}</div>
                     ) : (
-                      <div>require email name</div>
+                      <div className="text-red-600">require email name</div>
                     )}
 
                     {info.phone != "" ? (
                       <div>Phone number : {info.phone}</div>
                     ) : (
-                      <div>require valid phone number</div>
+                      <div className="text-red-600">
+                        require valid phone number
+                      </div>
                     )}
                   </div>
 
@@ -91,7 +95,7 @@ export default function Confirmation({
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={submit_info}
+                      onClick={submit}
                     >
                       Submit
                     </button>
