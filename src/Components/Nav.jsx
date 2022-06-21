@@ -15,26 +15,16 @@ const navigation = [
 export default function Nav({ basketState, basket }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="sticky top-0  bg-white overflow-hidden z-10">
-      <div className="max-w-7xl mx-auto">
+    <div className="sticky top-0 bg-white overflow-hidden z-10">
+      <div className="max-w-7xl mx-auto ">
         <div className="relative pb-4 bg-white sm:pb-4 md:pb-4 lg:w-full lg:pb-4 xl:pb-4">
-          {/* <svg
-            className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
-            fill="currentColor"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <polygon points="50,0 100,0 50,100 0,100" />
-          </svg> */}
-
           <Popover>
             <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
               <nav
                 className="relative flex items-center justify-between "
                 aria-label="Global"
               >
-                <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
+                <div className="hidden sm:block sm:ml-10 sm:pr-4 sm:space-x-8">
                   {navigation.map((item) => (
                     <Link
                       to={item.link}
@@ -45,22 +35,6 @@ export default function Nav({ basketState, basket }) {
                       {item.name}
                     </Link>
                   ))}
-                </div>
-
-                <div className="md:hidden">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    onClick={() => setOpen(true)}
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
                 </div>
 
                 {/* <a href="#">

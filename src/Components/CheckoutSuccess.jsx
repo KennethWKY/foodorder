@@ -45,7 +45,9 @@ export default function CheckoutSuccess({
                         Check out Success
                       </Dialog.Title>
                       <div className="mt-2">
-                        <div className="text-sm text-gray-500">{orderId}</div>
+                        <div className="text-sm text-gray-500">
+                          Order Id: {orderId}
+                        </div>
                       </div>
                     </div>
                   </div>

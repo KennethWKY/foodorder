@@ -16,7 +16,7 @@ export default function AdminDashboard({ orders, deleteOrder }) {
         {selectOrder.length != 0 ? (
           <OrderHistory order={selectOrder} deleteOrder={deleteOrder} />
         ) : (
-          <div>no order found</div>
+          <div>Order not found</div>
         )}
       </div>
     </>
