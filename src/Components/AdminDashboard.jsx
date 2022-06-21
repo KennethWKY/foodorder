@@ -1,10 +1,23 @@
 import OrderHistory from "./OrderHistory";
+import FindOrder from "./FindOrder";
+import React, { useState } from "react";
 
-export default function AdminDashboard({ orders }) {
+export default function AdminDashboard({ orders, deleteOrder }) {
+  const [selectOrder, setSelectOrder] = useState([]);
+  const findOrder = (targetOrder) => {
+    let order = orders.find((order) => order.id === targetOrder);
+    order ? setSelectOrder(order) : console.log("no order found");
+  };
+
   return (
     <>
-      <div>
-        <OrderHistory orders={orders} />
+      <div className="max-w-xl m-auto pt-20">
+        <FindOrder orders={orders} findOrder={findOrder} />
+        {selectOrder.length != 0 ? (
+          <OrderHistory order={selectOrder} deleteOrder={deleteOrder} />
+        ) : (
+          <div>no order found</div>
+        )}
       </div>
     </>
   );

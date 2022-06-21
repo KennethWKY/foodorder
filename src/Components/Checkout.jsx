@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import CheckoutForm from "./CheckoutForm";
+import OrderSummary from "./OrderSummary";
 
 export default function Checkout({
   items,
@@ -13,149 +15,28 @@ export default function Checkout({
   confirm,
 }) {
   return (
-    <>
-      <div className="flex bg-white max-w-6xl mx-auto">
-        {/* Form */}
-        <div>
-          <div className="mt-10 sm:mt-0">
-            <div className="md:grid md:grid-cols-3 md:gap-6 m-12 max-w-7xl">
-              <div className="mt-5 md:mt-0 md:col-span-2 mx-auto">
-                <form action="#" method="POST">
-                  <div className="shadow overflow-hidden sm:rounded-md">
-                    <div className="px-4 py-5 bg-white sm:p-6">
-                      <div className="grid grid-cols-6 gap-6">
-                        <div className="col-span-6 sm:col-span-3">
-                          <label
-                            htmlFor="first-name"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            First name
-                          </label>
-                          <input
-                            type="text"
-                            name="first-name"
-                            id="first-name"
-                            autoComplete="given-name"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            onChange={onChange_FirstName}
-                          />
-                        </div>
-
-                        <div className="col-span-6 sm:col-span-3">
-                          <label
-                            htmlFor="last-name"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            Last name
-                          </label>
-                          <input
-                            type="text"
-                            name="last-name"
-                            id="last-name"
-                            autoComplete="family-name"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            onChange={onChange_LastName}
-                          />
-                        </div>
-
-                        <div className="col-span-6 sm:col-span-6">
-                          <label
-                            htmlFor="email-address"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            Email address
-                          </label>
-                          <input
-                            onChange={onChange_Email}
-                            type="text"
-                            name="email-address"
-                            id="email-address"
-                            autoComplete="email"
-                            className="peer invalid:border-red-500 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                          />
-                        </div>
-
-                        <div className="col-span-6 sm:col-span-6">
-                          <label
-                            htmlFor="email-address"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            Phone number
-                          </label>
-                          <input
-                            onChange={onChange_Phone}
-                            type="text"
-                            name="phone-number"
-                            id="phone-number"
-                            autoComplete="email"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="px-4 py-3 bg-gray-50 text-right sm:px-6"></div>
-                  </div>
-                </form>
-              </div>
-
-              {/* Order summary */}
-              <div className="bg-white p-6">
-                {items.map((item) => (
-                  <li key={item.id} className="flex py-6 w-56 ">
-                    <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                      <img
-                        src={item.pic}
-                        alt={item.name}
-                        className="h-full w-full object-cover object-center"
-                      />
-                    </div>
-
-                    <div className="ml-4 flex flex-1 flex-col ">
-                      <div>
-                        <div className="flex justify-between text-base font-medium text-gray-900">
-                          <h3>
-                            <a href="#"> {item.name} </a>
-                          </h3>
-                          <p className="ml-4">
-                            {item.quantity === 0
-                              ? item.price
-                              : item.price * item.quantity}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex flex-1 items-end justify-between text-sm">
-                        <div className="flex">
-                          <p className="text-gray-500">Qty</p>
-                          <p className="text-gray-500 px-3">{item.quantity}</p>
-                        </div>
-
-                        <div className="flex">
-                          <button
-                            type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                            onClick={() => onClear(item)}
-                          >
-                            Remove
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-                Total ${ttlPrice}
-              </div>
-
-              <button
-                onClick={set_info}
-                type="submit"
-                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Check out
-              </button>
-            </div>
+    <div>
+      <div className="">
+        {/* Order summary */}
+        {items.length === 0 ? (
+          <div className="max-w-xl m-auto pt-20 font-extrabold text-7xl text-slate-900">
+            Basket is empty
           </div>
-        </div>
+        ) : (
+          <OrderSummary items={items} onClear={onClear} ttlPrice={ttlPrice} />
+        )}
+
+        {/* Form */}
+        {}
+        <CheckoutForm
+          onChange_FirstName={onChange_FirstName}
+          onChange_LastName={onChange_LastName}
+          onChange_Phone={onChange_Phone}
+          onChange_Email={onChange_Email}
+          onClear={onClear}
+          set_info={set_info}
+        />
       </div>
-    </>
+    </div>
   );
 }

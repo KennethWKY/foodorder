@@ -10,7 +10,6 @@ export default function Confirmation({
   info,
   basket,
 }) {
-  const [error, setError] = useState(true);
   return (
     <>
       {/* <div className="fixed inset-0 flex items-center justify-center">
@@ -55,7 +54,7 @@ export default function Confirmation({
                   >
                     Order Details
                   </Dialog.Title>
-                  <div className="mt-2">
+                  {/* <div className="mt-2">
                     <p className="text-md text-gray-500">
                       Please confirmation your order.
                     </p>
@@ -67,38 +66,48 @@ export default function Confirmation({
                         <div className="text-gray-900">{item.name}</div>
                       ) : null
                     )}
-                  </div>
+                  </div> */}
 
-                  <div>
+                  <div className="mt-5 flex flex-col gap-2">
                     {info.firstName != "" ? null : (
-                      <div className="text-red-600">require first name</div>
+                      <div className="text-red-600">Require first name</div>
                     )}
 
-                    {info.lasttName != "" ? null : <div>require last name</div>}
+                    {info.lastName != "" ? null : (
+                      <div className="text-red-600">Require last name</div>
+                    )}
 
                     {info.email != "" ? (
                       <div>email : {info.email}</div>
                     ) : (
-                      <div className="text-red-600">require email name</div>
+                      <div className="text-red-600">Require email name</div>
                     )}
 
                     {info.phone != "" ? (
                       <div>Phone number : {info.phone}</div>
                     ) : (
                       <div className="text-red-600">
-                        require valid phone number
+                        Require valid phone number
                       </div>
                     )}
                   </div>
 
                   <div className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={submit}
-                    >
-                      Submit
-                    </button>
+                    {info.order != "" &&
+                    info.firstName != "" &&
+                    info.lastName != "" &&
+                    info.email != "" &&
+                    info.phone != "" ? (
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        onClick={(e) => submit(e)}
+                      >
+                        Submit
+                      </button>
+                    ) : (
+                      <div></div>
+                    )}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

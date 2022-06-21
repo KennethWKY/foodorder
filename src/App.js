@@ -1,6 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffectm, useId, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import { doc, setDoc, onSnapshot, collection } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  onSnapshot,
+  collection,
+  deleteDoc,
+} from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
 import "./App.css";
@@ -20,6 +26,7 @@ import Intro from "./Components/Intro";
 import Control_pannel from "./Components/Control_pannel";
 import Confirmation from "./Components/Confirmation";
 import AdminDashboard from "./Components/AdminDashboard";
+import CheckoutSuccess from "./Components/CheckoutSuccess";
 
 import img1 from "./img/1.jpg";
 import img2 from "./img/2.jpg";
@@ -53,15 +60,15 @@ function App() {
   //   setPreviewIsOpen(true);
   // }
 
-  //   onSnapshot(collection(db, "order"), (snapshot) =>
-  //     snapshot.docs.map((doc) => doc.data())
-  //   );
-
   // get orders
   const orders = [];
   onSnapshot(collection(db, "order"), (snapshot) =>
     snapshot.docs.map((doc) => orders.push(doc.data()))
   );
+
+  const deleteOrder = (orderId) => {
+    deleteDoc(doc(db, "order", orderId));
+  };
 
   const onAdd = (product) => {
     const exist = basket.find((x) => x.id === product.id);
@@ -114,8 +121,10 @@ function App() {
     setEmail(e.target.value);
   };
 
-  const set_info = () => {
+  const set_info = (e) => {
+    e.preventDefault();
     let id = uuidv4();
+    let now = new Date();
     setInfo({
       firstName: firstName,
       lastName: lastName,
@@ -124,19 +133,17 @@ function App() {
       order: basket,
       status: "received",
       id: id,
+      time: now,
     });
     openModal();
   };
 
-  const [error, setError] = useState(true);
-
-  useEffect(() => {
-    setError(false);
-  }, [info]);
-
-  const submit = () => {
-    error === true ? console.log("submit") : console.log("error");
-    // setDoc(doc(db, "order"), info);
+  //Submit to firebase
+  const submit = (e) => {
+    e.preventDefault();
+    setDoc(doc(db, "order", info.id), info);
+    closeModal();
+    openSuccess();
   };
 
   //Confirmation popup
@@ -158,8 +165,17 @@ function App() {
     setPreview(true);
   };
 
+  //Success checkout
+  const [checkoutSuccess, setcheckoutSuccess] = useState(false);
+  function openSuccess() {
+    setcheckoutSuccess(true);
+  }
+  function closeSuccess() {
+    setcheckoutSuccess(false);
+  }
+
   return (
-    <div className="App bg-white">
+    <div className="App h-screen bg-white">
       <Basket
         basketState={setOpen}
         basket={open}
@@ -185,6 +201,13 @@ function App() {
         onAdd={onAdd}
         onRemove={onRemove}
       />
+      <CheckoutSuccess
+        orders={orders}
+        checkoutSuccess={checkoutSuccess}
+        closeSuccess={closeSuccess}
+        orderId={info.id}
+      />
+
       {/* <Header /> */}
 
       <Routes>
@@ -196,6 +219,8 @@ function App() {
               items={basket}
               products={item}
               openPreview={openPreview}
+              onAdd={onAdd}
+              onRemove={onRemove}
             />
           }
         />
@@ -218,10 +243,9 @@ function App() {
         />
         <Route
           path="admin"
-          element={<AdminDashboard db={db} orders={orders} />}
+          element={<AdminDashboard orders={orders} deleteOrder={deleteOrder} />}
         />
       </Routes>
-      <Footer />
     </div>
   );
 }
