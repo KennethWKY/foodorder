@@ -11,13 +11,15 @@ export default function AdminDashboard({ orders, deleteOrder }) {
 
   return (
     <>
-      <div className="max-w-xl m-auto pt-20">
+      <div className="max-w-xl m-auto pt-20 px-10">
         <FindOrder orders={orders} findOrder={findOrder} />
-        {selectOrder.length != 0 ? (
-          <OrderHistory order={selectOrder} deleteOrder={deleteOrder} />
-        ) : (
-          <div>Order not found</div>
-        )}
+        <div className="pt-10">
+          {selectOrder.length != 0 ? (
+            <OrderHistory order={selectOrder} deleteOrder={deleteOrder} />
+          ) : (
+            <div></div>
+          )}
+        </div>
       </div>
     </>
   );

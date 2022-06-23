@@ -3,8 +3,8 @@ export default function OrderSummary({ items, onClear, ttlPrice }) {
     <div className="max-w-xl m-auto pt-20 text-slate-900">
       <div className="shadow overflow-hidden sm:rounded-md px-4 py-5">
         {items.map((item) => (
-          <div className="">
-            <li key={item.id} className="py-6 flex justify-between">
+          <div key={item.id} className="">
+            <li className="py-6 flex justify-between">
               <div className="flex flex-row gap-6">
                 <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                   <img

@@ -213,7 +213,7 @@ function App() {
       <Routes>
         {/* <Route path="home" element={<Intro items={item} />}></Route> */}
         <Route
-          path="home"
+          path="/"
           element={
             <ItemDisplay
               items={basket}
