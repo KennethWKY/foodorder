@@ -15,7 +15,7 @@ export default function Checkout({
   confirm,
 }) {
   return (
-    <div>
+    <div className="bg-white h-screen">
       <div className="">
         {/* Order summary */}
         {items.length === 0 ? (
