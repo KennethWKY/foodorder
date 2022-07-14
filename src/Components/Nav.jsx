@@ -9,7 +9,7 @@ const navigation = [
   { id: 1, name: "Home", href: "#", link: "/" },
   // { id: 2, name: "Items", href: "#", link: "/items" },
   { id: 3, name: "Checkout", href: "#", link: "/checkout" },
-  { id: 4, name: "Order History", href: "#", link: "/admin" },
+  { id: 4, name: "Order History", href: "#", link: "/order" },
 ];
 
 export default function Nav({}) {

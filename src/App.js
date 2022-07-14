@@ -27,6 +27,7 @@ import Control_pannel from "./Components/Control_pannel";
 import Confirmation from "./Components/Confirmation";
 import AdminDashboard from "./Components/AdminDashboard";
 import CheckoutSuccess from "./Components/CheckoutSuccess";
+import AllOrderHistory from "./Components/AllOrderHistory";
 
 import img1 from "./img/1.jpg";
 import img2 from "./img/2.jpg";
@@ -175,7 +176,7 @@ function App() {
   }
 
   return (
-    <div className="App bg-white h-screen">
+    <div className="App bg-white">
       <Basket
         basketState={setOpen}
         basket={open}
@@ -242,9 +243,10 @@ function App() {
           }
         />
         <Route
-          path="admin"
+          path="order"
           element={<AdminDashboard orders={orders} deleteOrder={deleteOrder} />}
         />
+        <Route path="admin" element={<AllOrderHistory orders={orders} />} />
       </Routes>
     </div>
   );

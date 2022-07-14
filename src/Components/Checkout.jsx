@@ -15,11 +15,11 @@ export default function Checkout({
   confirm,
 }) {
   return (
-    <div className="bg-white h-screen">
-      <div className="">
+    <div className="bg-white min-h-screen">
+      <div className="container mx-auto px-4">
         {/* Order summary */}
         {items.length === 0 ? (
-          <div className="max-w-xl m-auto pt-20 font-extrabold text-7xl text-slate-900">
+          <div className="max-w-xl m-auto pt-20 px-4 font-extrabold text-7xl text-slate-900">
             Basket is empty
           </div>
         ) : (

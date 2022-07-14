@@ -1,7 +1,6 @@
 import OrderHistory from "./OrderHistory";
 import FindOrder from "./FindOrder";
 import React, { useState } from "react";
-import AllOrderHistory from "./AllOrderHistory";
 
 export default function AdminDashboard({ orders, deleteOrder }) {
   const [selectOrder, setSelectOrder] = useState([]);
@@ -12,7 +11,7 @@ export default function AdminDashboard({ orders, deleteOrder }) {
 
   return (
     <>
-      <div className="max-w-xl m-auto pt-20 px-10">
+      <div className="max-w-xl m-auto pt-20 px-10 bg-white min-h-screen">
         <FindOrder orders={orders} findOrder={findOrder} />
         <div className="pt-10">
           {selectOrder.length != 0 ? (
@@ -21,7 +20,6 @@ export default function AdminDashboard({ orders, deleteOrder }) {
             <div></div>
           )}
         </div>
-        <AllOrderHistory orders={orders} />
       </div>
     </>
   );
