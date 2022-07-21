@@ -62,9 +62,14 @@ function App() {
   // }
 
   // get orders
-  const orders = [];
-  onSnapshot(collection(db, "order"), (snapshot) =>
-    snapshot.docs.map((doc) => orders.push(doc.data()))
+  const [orders, setOrders] = useState([]);
+
+  useEffect(
+    () =>
+      onSnapshot(collection(db, "order"), (snapshot) =>
+        setOrders(snapshot.docs.map((doc) => doc.data()))
+      ),
+    []
   );
 
   const deleteOrder = (orderId) => {
