@@ -6,7 +6,6 @@ export default function AllOrderHistory({ orders, deleteOrder }) {
     <>
       <div className="bg-white h-screen max-w-2xl m-auto">
         <div className="m-20">
-          <div>All order</div>
           {orders.map((order) => (
             <div
               key={order.id}
