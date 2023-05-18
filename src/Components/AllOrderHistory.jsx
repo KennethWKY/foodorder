@@ -5,11 +5,11 @@ export default function AllOrderHistory({ orders, deleteOrder }) {
   return (
     <>
       <div className="bg-white h-screen max-w-2xl m-auto">
-        <div className="m-20">
+        <div className="">
           {orders.map((order) => (
             <div
               key={order.id}
-              className="bg-white shadow overflow-hidden sm:rounded-lg mb-10"
+              className="bg-white shadow overflow-hidden sm:rounded-lg mb-10 flex flex-col justify-center"
             >
               <Disclosure>
                 <Disclosure.Button className="">
@@ -18,7 +18,7 @@ export default function AllOrderHistory({ orders, deleteOrder }) {
                       Order
                     </h3>
                     <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                      {order.id}
+                    {order.firstName} {order.lastName}
                     </p>
                   </div>
                 </Disclosure.Button>
@@ -104,9 +104,9 @@ export default function AllOrderHistory({ orders, deleteOrder }) {
                       </div>
                       <button
                         onClick={() => deleteOrder(order.id)}
-                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 w-full"
                       >
-                        Delete{order.id}
+                        Delete
                       </button>
                     </dl>
                   </div>
