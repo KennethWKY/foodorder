@@ -181,7 +181,7 @@ function App() {
   }
 
   return (
-    <div className="App bg-white">
+    <div className="App bg-white w-full h-screen">
       <Basket
         basketState={setOpen}
         basket={open}
